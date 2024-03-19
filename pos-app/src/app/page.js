@@ -6,7 +6,7 @@ import { useZustandStores } from "~/zustandStores";
 
 export default function Home() {
     const { users, createUsers } = useZustandStores()
-    console.log(users)
+
     const handleAuthMutationSuccess = (data) => {
         createUsers('Hello')
         alert('Ok')
@@ -36,11 +36,11 @@ export default function Home() {
                 password: ''
             }}
             validationSchema={loginSchema}
-            onSubmit={(values) => { 
-                console.log(values)
+            onSubmit={(values, {resetForm}) => { 
                 const {username, password} = values
-                console.log(password)
-                mutate({username, password})
+                mutate({username, password}, {
+                    onSuccess: () => resetForm()
+                })
             }}
           >
             {

@@ -1,9 +1,22 @@
 {
-    "users": [{
-        "id": "1", 
-        "username": "ryandefryan",
-        "email": "ryan@gmail.com",
-        "password": "abc123", 
-        "role": "ADMIN"
-    }]
+  "admins": [
+    {
+      "id": "ebd5",
+      "values": {
+        "username": "abc",
+        "email": "abc@gmail.com",
+        "password": "abc",
+        "role": "super_admin"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "ryandefryan",
+      "email": "ryan@gmail.com",
+      "password": "abc123",
+      "role": "ADMIN"
+    }
+  ]
 }
