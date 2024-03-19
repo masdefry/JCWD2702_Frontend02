@@ -1,21 +1,24 @@
 'use client';
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { loginSchema } from '~/schemas/loginSchema';
-export default function Home() {
+import { useAuthMutation } from "~/api/useAuthMutation";
+import { useZustandStores } from "~/zustandStores";
 
-    const {mutate, status} = useMutation({
-        mutationFn: async(username, password) => {
-            return await axios.get(`http://localhost:5000/users?username=${username}&password=${password}`)
-        }, 
-        onSuccess: (data) => {
-            console.log('Success')
-            console.log(data)
-        },
-        onError: (error) => {
-            console.log('Error')
-        }
+export default function Home() {
+    const { users, createUsers } = useZustandStores()
+    console.log(users)
+    const handleAuthMutationSuccess = (data) => {
+        createUsers('Hello')
+        alert('Ok')
+    }
+
+    const handleAuthMutationError = (error) => {
+        alert(error.message)
+    }
+
+    const {mutate, status} = useAuthMutation({
+        onSuccess: handleAuthMutationSuccess, 
+        onError: handleAuthMutationError
     })
 
   return (
@@ -33,9 +36,11 @@ export default function Home() {
                 password: ''
             }}
             validationSchema={loginSchema}
-            onSubmit={(values) => {
+            onSubmit={(values) => { 
+                console.log(values)
                 const {username, password} = values
-                mutate(username, password)
+                console.log(password)
+                mutate({username, password})
             }}
           >
             {
