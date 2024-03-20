@@ -18,6 +18,7 @@ export const useCreateAdminMutation = () => {
     }
 
     return {
+        isLoading, 
         handleCreateAdmin,
     }
 

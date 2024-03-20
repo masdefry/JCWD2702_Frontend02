@@ -27,5 +27,15 @@
       "password": "abc123",
       "role": "ADMIN"
     }
+  ],
+  "products": [
+    {
+      "id": "9e16",
+      "description": "Abc",
+      "name": "Abc",
+      "imageUrl": "Abc",
+      "price": "123",
+      "category": "drink"
+    }
   ]
 }

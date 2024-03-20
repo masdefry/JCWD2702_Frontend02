@@ -1,6 +1,16 @@
+'use client';
 import HeaderDashboard from "~/components/cores/HeaderDashboard";
+import { useCreateProduct } from "~/api/useCreateProduct";
+import { useRef } from "react";
 
 const ProductPage = () => {
+    const { handleCreateProduct } = useCreateProduct()
+    const name = useRef()
+    const price = useRef()
+    const description = useRef()
+    const imageUrl = useRef()
+    const category = useRef()
+
     return(
         <div>
             <HeaderDashboard 
@@ -15,6 +25,7 @@ const ProductPage = () => {
                                 Name
                             </label>
                             <input 
+                                ref={name}
                                 className="input border border-gray-300 w-full py-3 px-3 rounded-md"
                                 placeholder="Type Product Name"
                             />
@@ -24,6 +35,7 @@ const ProductPage = () => {
                                 Price
                             </label>
                             <input 
+                                ref={price}
                                 className="input border border-gray-300 w-full py-3 px-3 rounded-md"
                                 placeholder="Type Product Price"
                             />
@@ -35,6 +47,7 @@ const ProductPage = () => {
                                 Image Url
                             </label>
                             <input 
+                                ref={imageUrl}
                                 className="input border border-gray-300 w-full py-3 px-3 rounded-md"
                                 placeholder="Type Product Image"
                             />
@@ -44,6 +57,7 @@ const ProductPage = () => {
                                 Descrption
                             </label>
                             <input 
+                                ref={description}
                                 className="input border border-gray-300 w-full py-3 px-3 rounded-md"
                                 placeholder="Type Product Price"
                             />
@@ -53,19 +67,19 @@ const ProductPage = () => {
                         <label>
                             Category
                         </label>
-                        <select className="input border border-gray-300 w-full py-3 px-3 rounded-md">
+                        <select ref={category} className="input border border-gray-300 w-full py-3 px-3 rounded-md">
                             <option>
                                 Choose Category
                             </option>
-                            <option>
-                                Choose Category
+                            <option value="food">
+                                Food
                             </option>
-                            <option>
-                                Choose Category
+                            <option value="drink">
+                                Drink
                             </option>
                         </select>
                     </div>
-                    <button className="btn bg-orange-500 text-white w-full py-3 rounded-md hover:bg-black">
+                    <button onClick={() =>  handleCreateProduct({name, price, description, imageUrl, category})} className="btn bg-orange-500 text-white w-full py-3 rounded-md hover:bg-black">
                         Create Product
                     </button>
                 </div>
