@@ -8,6 +8,15 @@
         "password": "abc",
         "role": "super_admin"
       }
+    },
+    {
+      "id": "7c55",
+      "values": {
+        "username": "abc",
+        "email": "abc@gmail.com",
+        "password": "abc",
+        "role": "super_admin"
+      }
     }
   ],
   "users": [

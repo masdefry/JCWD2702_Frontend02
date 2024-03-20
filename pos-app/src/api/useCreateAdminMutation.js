@@ -10,18 +10,15 @@ export const useCreateAdminMutation = () => {
             await axios.post('http://localhost:5000/admins',{
                 values
             })
-
-            alert('Success')
         } catch (error) {
-            alert(error)
+            
         }finally{
-            setIsLoading(false)
+            setIsloading(false)
         }
     }
 
     return {
         handleCreateAdmin,
-        isLoading
     }
 
 }
